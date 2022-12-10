@@ -25,7 +25,8 @@ public:
 
 int reversePolish(Stack myStack, string myExpression)
 {
-    for (int i = 0; i < myExpression.length(); i++)
+    int expressionLength = myExpression.length();
+    for (int i = 0; i < expressionLength; i++)
     {
         char current = myExpression[i];
 

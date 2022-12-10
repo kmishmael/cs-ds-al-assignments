@@ -6,12 +6,13 @@ using namespace std;
 class Stack
 {
 
-    int stack[5];
+    int stack[100];
     int stackIndex;
+    int stackSize = 100;
 
 public:
     Stack()
-    {
+    { 
         stackIndex = -1;
     }
     int size();
@@ -24,7 +25,9 @@ public:
 
 int balancedBrackets(Stack stack, string brackets)
 {
-    for (int i = 0; i < (int)brackets.length(); i++)
+    int k = 0;
+    int i = 0;
+    for (; i < (int)brackets.length(); i++)
     {
         char current = brackets[i];
         if (current == '<' || current == '{' || current == '[' || current == '(')
@@ -69,6 +72,7 @@ int balancedBrackets(Stack stack, string brackets)
             default:
                 break;
             }
+            k++;
             stack.pop();
         }
     }
@@ -76,6 +80,8 @@ int balancedBrackets(Stack stack, string brackets)
     if (stack.isEmpty())
     {
         return -1;
+    } else {
+        return i - k;
     }
 
     return 0;
@@ -107,7 +113,7 @@ bool Stack::isEmpty()
 
 bool Stack::push(int newElement)
 {
-    if (stackIndex < 4 && newElement != -1)
+    if (stackIndex < (stackSize - 1) && newElement != -1)
     {
         stackIndex++;
         stack[stackIndex] = newElement;
@@ -122,7 +128,8 @@ int Stack::pop()
     {
         return -1;
     }
-    return stack[--stackIndex];
+    stackIndex--;
+    return stack[stackIndex];
 }
 
 int Stack::peek()
