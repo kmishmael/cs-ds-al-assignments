@@ -1,9 +1,10 @@
 {
-    "files.associations": {
-        "*.ts": "typescript",
-        "vector": "cpp",
-        "initializer_list": "cpp",
-        "xstring": "cpp",
-        "xutility": "cpp"
-    }
+  "files.associations": {
+    "*.ts": "typescript",
+    "vector": "cpp",
+    "initializer_list": "cpp",
+    "xstring": "cpp",
+    "xutility": "cpp",
+    "iostream": "cpp"
+  }
 }

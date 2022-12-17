@@ -15,47 +15,74 @@ public:
     Node *left;
     Node *right;
 
-    Node * insertRecursive(Node * node, int value){
-        if(node == NULL){
+    Node *insertRecursive(Node *node, int value)
+    {
+        if (node == NULL)
+        {
             return new Node(value);
         }
 
-        if(value > node->value){
+        if (value > node->value)
+        {
             node->right = insertRecursive(node->right, value);
-        } 
-        else {
+        }
+        else
+        {
             node->left = insertRecursive(node->left, value);
         }
 
         return node;
-        
     }
 
     void insert(int fruit)
     {
         insertRecursive(this, fruit);
-
     }
 
-    void recurseInOrder(Node * rootNode){
-            if(rootNode == NULL){
-                return;
-            } else {
-                recurseInOrder(rootNode->left);
-                cout << rootNode->value << " ";
-                recurseInOrder(rootNode->right);
-            }
-        };
+    void recurseInOrder(Node *rootNode)
+    {
+        if (rootNode == NULL)
+        {
+            return;
+        }
+        else
+        {
+            recurseInOrder(rootNode->left);
+            cout << rootNode->value << " ";
+            recurseInOrder(rootNode->right);
+        }
+    };
 
     void inOrder()
     {
-        
+
         Node *root = this;
 
         recurseInOrder(root);
 
         cout << endl;
+    }
 
+    void recursePreOrder(Node *root)
+    {
+
+        if (root == NULL)
+        {
+            return;
+        }
+        else
+        {
+            cout << root->value << " ";
+            recursePreOrder(root->left);
+            recursePreOrder(root->right);
+        }
+    }
+
+    void preOrder()
+    {
+        Node *root = this;
+        recursePreOrder(root);
+        cout << endl;
     }
 };
 
@@ -75,7 +102,7 @@ int main()
     myTree->insert(7);
 
     // carry out the traversal
-    myTree->inOrder(); // output should be: 1 2 3 4 5 6 7
+    myTree->preOrder();
 
     return 0;
 }
